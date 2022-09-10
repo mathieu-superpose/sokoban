@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import { useEffect, useRef } from "react";
+import * as PIXI from "pixi.js";
+import { startGame } from "./game";
 import './App.css';
 
 function App() {
+  const domRef = useRef(null);
+
+  useEffect(() => {
+      const pixiApp = new PIXI.Application({ width: 540, height: 540 });
+      domRef.current?.appendChild(pixiApp.view);
+      startGame(pixiApp);
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Sokoban</h1>
+      <div ref={domRef} />
     </div>
   );
 }
