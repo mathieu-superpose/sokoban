@@ -7,9 +7,9 @@ function App() {
   const domRef = useRef(null);
 
   useEffect(() => {
-      const pixiApp = new PIXI.Application({ width: 540, height: 540, backgroundColor: 0x1099bb, antialias: false });
+      const pixiApp = new PIXI.Application({ width: 540, height: 540, antialias: false });
       domRef.current?.appendChild(pixiApp.view);
-      // pixiApp.stop()
+      pixiApp.stop()
       startGame(pixiApp);
   }, []);
 
